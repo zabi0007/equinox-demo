@@ -32,6 +32,7 @@
       color:var(--text);
       line-height:1.6;
       overflow-x:hidden;
+      cursor:url('https://cur.cursors-4u.net/animals/ani-12/ani1115.cur'), auto;
     }
     img{max-width:100%;display:block}
     a{text-decoration:none}
@@ -73,6 +74,7 @@
       letter-spacing:1.5px;
       font-size:.82rem;
       transition:.35s ease;
+      cursor:pointer;
     }
     .btn-primary{
       background:var(--gold);
@@ -92,7 +94,6 @@
       color:#111;
     }
 
-    /* navbar */
     .navbar{
       position:fixed;
       top:0;left:0;width:100%;
@@ -123,7 +124,6 @@
       flex-wrap:wrap;
     }
 
-    /* hero */
     .detail-hero{
       min-height:88vh;
       padding:140px 0 90px;
@@ -138,6 +138,7 @@
       width:100%;
       height:100%;
       object-fit:cover;
+      object-position:center center;
       z-index:1;
     }
     .detail-hero::after{
@@ -190,7 +191,6 @@
       font-size:.78rem;
     }
 
-    /* intro layout */
     .tour-overview{
       background:var(--bg);
     }
@@ -262,7 +262,6 @@
       margin-bottom:18px;
     }
 
-    /* highlights */
     .highlights{
       background:var(--bg2);
     }
@@ -288,7 +287,6 @@
       font-size:.92rem;
     }
 
-    /* itinerary */
     .itinerary{
       background:var(--bg);
     }
@@ -321,7 +319,6 @@
       font-size:.94rem;
     }
 
-    /* included */
     .included{
       background:var(--bg2);
     }
@@ -360,7 +357,6 @@
       font-size:.72rem;
     }
 
-    /* gallery */
     .tour-gallery{
       background:var(--bg);
     }
@@ -377,7 +373,6 @@
       border:1px solid var(--border);
     }
 
-    /* faq */
     .faq{
       background:var(--bg2);
     }
@@ -420,7 +415,6 @@
     }
     .faq-item.active .faq-answer{display:block}
 
-    /* booking */
     .booking{
       background:linear-gradient(135deg,#151515 0%,#0f0f0f 100%);
     }
@@ -485,7 +479,6 @@
       resize:vertical;
     }
 
-    /* footer */
     .footer{
       background:#0c0c0c;
       padding:60px 0 25px;
@@ -539,23 +532,48 @@
     }
 
     @media(max-width:768px){
+      body{
+        cursor:auto;
+      }
       section{padding:72px 0}
+      .navbar{
+        padding:12px 0;
+      }
+      .logo{
+        font-size:1.15rem;
+        letter-spacing:1px;
+      }
+      .nav-actions{
+        flex-direction:row;
+        flex-wrap:wrap;
+        gap:10px;
+        justify-content:flex-end;
+      }
+      .nav-actions .btn{
+        padding:10px 14px;
+        font-size:.72rem;
+        letter-spacing:1px;
+        white-space:nowrap;
+      }
+      .detail-hero{
+        padding:115px 0 70px;
+        min-height:78vh;
+      }
+      .hero-badge{
+        padding:8px 14px;
+        font-size:.68rem;
+      }
       .highlight-grid,
       .included-grid,
       .gallery-grid,
       .form-row{
         grid-template-columns:1fr;
       }
-      .nav-actions{
-        flex-direction:column;
-        align-items:flex-end;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
   <header class="navbar">
     <div class="container nav-wrap">
       <a href="index.html" class="logo">Equinox <span>Safaris</span></a>
@@ -566,7 +584,6 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="detail-hero">
     <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1800&q=80" alt="Pakistan Horse Riding Tour">
     <div class="container">
@@ -587,7 +604,6 @@
     </div>
   </section>
 
-  <!-- Overview -->
   <section class="tour-overview">
     <div class="container">
       <div class="overview-grid">
@@ -632,7 +648,6 @@
     </div>
   </section>
 
-  <!-- Highlights -->
   <section class="highlights">
     <div class="container">
       <div class="section-head center">
@@ -664,7 +679,6 @@
     </div>
   </section>
 
-  <!-- Itinerary -->
   <section class="itinerary">
     <div class="container">
       <div class="section-head center">
@@ -678,43 +692,36 @@
           <h3>Arrival & Welcome Briefing</h3>
           <p>Arrival, transfer, rider briefing, and overnight stay before the ride begins.</p>
         </div>
-
         <div class="day-card">
           <div class="day-label">Day 2</div>
           <h3>First Trail Through Open Valley Routes</h3>
           <p>Meet the horses, settle into the riding rhythm, and begin through scenic valley terrain.</p>
         </div>
-
         <div class="day-card">
           <div class="day-label">Day 3</div>
           <h3>Mountain Pathways & Panorama Points</h3>
           <p>Ride deeper into the mountains with dramatic landscapes and elevated trail sections.</p>
         </div>
-
         <div class="day-card">
           <div class="day-label">Day 4</div>
           <h3>Remote Camp Experience</h3>
           <p>A full riding day leading to one of the tour’s most memorable overnight camp settings.</p>
         </div>
-
         <div class="day-card">
           <div class="day-label">Day 5</div>
           <h3>Highland Routes & Scenic Riding</h3>
           <p>Continue across beautiful mountain tracks and enjoy one of the most scenic riding days.</p>
         </div>
-
         <div class="day-card">
           <div class="day-label">Day 6</div>
           <h3>Descent Into Valley Trails</h3>
           <p>Ride through varied terrain with changing landscapes and local route highlights.</p>
         </div>
-
         <div class="day-card">
           <div class="day-label">Day 7</div>
           <h3>Final Full Riding Day</h3>
           <p>Enjoy the final major riding section before returning toward the base point.</p>
         </div>
-
         <div class="day-card">
           <div class="day-label">Day 8</div>
           <h3>Departure</h3>
@@ -724,7 +731,6 @@
     </div>
   </section>
 
-  <!-- Included -->
   <section class="included">
     <div class="container">
       <div class="section-head center">
@@ -760,7 +766,6 @@
     </div>
   </section>
 
-  <!-- Gallery -->
   <section class="tour-gallery">
     <div class="container">
       <div class="section-head center">
@@ -776,7 +781,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="faq">
     <div class="container">
       <div class="section-head center">
@@ -809,7 +813,6 @@
     </div>
   </section>
 
-  <!-- Booking -->
   <section class="booking" id="booking">
     <div class="container">
       <div class="booking-wrap">
@@ -876,7 +879,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
