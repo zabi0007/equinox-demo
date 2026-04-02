@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equinox Safaris — Ride Beyond The Horizon</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#111111;
+      --bg2:#171717;
+      --bg3:#1d1d1d;
+      --text:#f1ece4;
+      --muted:rgba(241,236,228,.72);
+      --gold:#c9a96e;
+      --gold2:#e4c98d;
+      --border:rgba(201,169,110,.16);
+      --heading:'Playfair Display', serif;
+      --body:'Inter', sans-serif;
+      --shadow:0 20px 60px rgba(0,0,0,.28);
+      --radius:18px;
+    }
+
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--body);
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none}
+    section{padding:100px 0}
+    .container{max-width:1280px;margin:0 auto;padding:0 24px}
+
+    .section-head{margin-bottom:54px}
+    .section-head.center{text-align:center}
+    .section-head.center .section-desc{margin:0 auto}
+    .section-label{
+      display:inline-block;
+      color:var(--gold);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      margin-bottom:14px;
+    }
+    .section-title{
+      font-family:var(--heading);
+      font-size:clamp(2.2rem,4vw,3.8rem);
+      line-height:1.08;
+      margin-bottom:16px;
+    }
+    .section-title em{font-style:italic;color:var(--gold)}
+    .section-desc{
+      max-width:680px;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      text-decoration:none;
+      padding:15px 30px;
+      border:1px solid var(--gold);
+      text-transform:uppercase;
+      letter-spacing:1.6px;
+      font-size:.82rem;
+      transition:.35s ease;
+    }
+    .btn-primary{
+      background:var(--gold);
+      color:#111;
+      font-weight:600;
+    }
+    .btn-primary:hover{
+      background:transparent;
+      color:var(--gold);
+      transform:translateY(-2px);
+    }
+    .btn-outline{
+      color:var(--gold);
+      background:transparent;
+    }
+    .btn-outline:hover{
+      background:var(--gold);
+      color:#111;
+      transform:translateY(-2px);
+    }
+
+    /* navbar */
+    .navbar{
+      position:fixed;
+      top:0;left:0;width:100%;
+      z-index:1000;
+      padding:18px 0;
+      transition:.35s ease;
+    }
+    .navbar.scrolled{
+      background:rgba(17,17,17,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .logo{
+      color:var(--gold);
+      font-family:var(--heading);
+      font-size:1.55rem;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      white-space:nowrap;
+    }
+    .logo span{color:var(--text);font-weight:400}
+    .nav-links{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:30px;
+    }
+    .nav-links a{
+      color:var(--text);
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      transition:.3s;
+    }
+    .nav-links a:hover{color:var(--gold)}
+    .nav-cta{padding:12px 22px}
+    .menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      width:34px;height:28px;
+      position:relative;
+      cursor:pointer;
+    }
+    .menu-toggle span{
+      position:absolute;
+      left:0;
+      width:100%;
+      height:2px;
+      background:var(--text);
+      transition:.3s;
+    }
+    .menu-toggle span:nth-child(1){top:4px}
+    .menu-toggle span:nth-child(2){top:13px}
+    .menu-toggle span:nth-child(3){top:22px}
+
+    /* hero */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      padding:150px 0 100px;
+    }
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      z-index:1;
+    }
+    .hero-bg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform:scale(1.06);
+    }
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      background:linear-gradient(to bottom, rgba(0,0,0,.28), rgba(0,0,0,.74));
+    }
+    .hero-content{
+      position:relative;
+      z-index:3;
+      max-width:900px;
+    }
+    .hero-badge{
+      display:inline-block;
+      padding:11px 20px;
+      border:1px solid rgba(201,169,110,.28);
+      color:var(--gold);
+      background:rgba(201,169,110,.06);
+      font-size:.72rem;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      margin-bottom:24px;
+      border-radius:999px;
+    }
+    .hero-title{
+      font-family:var(--heading);
+      font-size:clamp(3.1rem,7vw,6.4rem);
+      line-height:1.02;
+      margin-bottom:18px;
+    }
+    .hero-title em{
+      color:var(--gold);
+      font-style:italic;
+    }
+    .hero-subtitle{
+      font-size:1.04rem;
+      color:rgba(241,236,228,.82);
+      max-width:680px;
+      margin-bottom:34px;
+    }
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    /* tours */
+    .tours{background:var(--bg)}
+    .tour-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:28px;
+    }
+    .tour-card{
+      background:var(--bg2);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      overflow:hidden;
+      transition:.35s ease;
+      box-shadow:var(--shadow);
+    }
+    .tour-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(201,169,110,.3);
+    }
+    .tour-image{
+      height:280px;
+      overflow:hidden;
+      position:relative;
+    }
+    .tour-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.6s ease;
+    }
+    .tour-card:hover .tour-image img{transform:scale(1.08)}
+    .tour-badge{
+      position:absolute;
+      top:16px;left:16px;
+      background:rgba(17,17,17,.8);
+      color:var(--gold);
+      border:1px solid rgba(201,169,110,.2);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      z-index:2;
+    }
+    .tour-body{padding:24px}
+    .tour-country{
+      color:var(--gold);
+      font-size:.74rem;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:10px;
+    }
+    .tour-title{
+      font-family:var(--heading);
+      font-size:1.55rem;
+      line-height:1.2;
+      margin-bottom:10px;
+    }
+    .tour-text{
+      color:var(--muted);
+      font-size:.93rem;
+      margin-bottom:18px;
+    }
+    .tour-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:20px;
+    }
+    .tour-meta span{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(201,169,110,.14);
+      background:rgba(201,169,110,.04);
+      font-size:.74rem;
+      color:var(--text);
+    }
+    .tour-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding-top:18px;
+      border-top:1px solid rgba(201,169,110,.08);
+    }
+    .tour-price{
+      font-family:var(--heading);
+      color:var(--gold);
+      font-size:1.3rem;
+    }
+    .tour-price small{
+      font-family:var(--body);
+      font-size:.72rem;
+      color:var(--muted);
+    }
+    .tour-link{
+      color:var(--text);
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      font-size:.8rem;
+      transition:.3s;
+    }
+    .tour-link:hover{color:var(--gold)}
+
+    /* destinations */
+    .destinations{background:var(--bg2)}
+    .dest-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+    .dest-card{
+      position:relative;
+      min-height:340px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+    .dest-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.7s ease;
+    }
+    .dest-card:hover img{transform:scale(1.08)}
+    .dest-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.18));
+      display:flex;
+      align-items:flex-end;
+      padding:26px;
+    }
+    .dest-tag{
+      display:inline-block;
+      color:var(--gold);
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:10px;
+    }
+    .dest-content h3{
+      font-family:var(--heading);
+      font-size:1.5rem;
+      margin-bottom:8px;
+    }
+    .dest-content p{
+      color:rgba(241,236,228,.82);
+      font-size:.92rem;
+    }
+
+    /* why choose us */
+    .why-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:22px;
+    }
+    .why-card{
+      background:var(--bg2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px 24px;
+      transition:.35s ease;
+    }
+    .why-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(201,169,110,.3);
+    }
+    .why-icon{
+      width:56px;height:56px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(201,169,110,.25);
+      color:var(--gold);
+      font-size:1.2rem;
+      margin-bottom:16px;
+    }
+    .why-card h3{
+      font-family:var(--heading);
+      font-size:1.2rem;
+      margin-bottom:8px;
+    }
+    .why-card p{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    /* featured */
+    .featured{background:var(--bg)}
+    .featured-wrap{
+      display:grid;
+      grid-template-columns:1.08fr 1fr;
+      gap:38px;
+      align-items:center;
+    }
+    .featured-image{
+      border-radius:20px;
+      overflow:hidden;
+      min-height:580px;
+      border:1px solid var(--border);
+    }
+    .featured-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .featured-content{
+      background:var(--bg2);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:38px;
+      box-shadow:var(--shadow);
+    }
+    .featured-stats{
+      display:flex;
+      flex-wrap:wrap;
+      gap:24px;
+      margin:24px 0;
+      padding:22px 0;
+      border-top:1px solid rgba(201,169,110,.1);
+      border-bottom:1px solid rgba(201,169,110,.1);
+    }
+    .featured-stats h4{
+      font-family:var(--heading);
+      font-size:1.8rem;
+      color:var(--gold);
+      line-height:1;
+      margin-bottom:4px;
+    }
+    .featured-stats p{
+      font-size:.76rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+    }
+    .featured-list{
+      list-style:none;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-bottom:28px;
+    }
+    .featured-list li{
+      position:relative;
+      padding-left:16px;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+    .featured-list li::before{
+      content:"◆";
+      position:absolute;
+      left:0;top:0;
+      color:var(--gold);
+      font-size:.6rem;
+    }
+
+    /* gallery */
+    .gallery{background:var(--bg2)}
+    .gallery-grid{
+      columns:3;
+      column-gap:18px;
+    }
+    .gallery-item{
+      break-inside:avoid;
+      margin-bottom:18px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+    .gallery-item img{
+      width:100%;
+      transition:.6s ease;
+    }
+    .gallery-item:hover img{transform:scale(1.06)}
+
+    /* testimonials */
+    .testimonials{background:var(--bg)}
+    .test-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+    .test-card{
+      background:var(--bg2);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+    }
+    .stars{
+      color:var(--gold);
+      letter-spacing:2px;
+      margin-bottom:14px;
+    }
+    .test-card p{
+      color:var(--muted);
+      margin-bottom:18px;
+      font-size:.94rem;
+    }
+    .author{
+      font-family:var(--heading);
+      font-size:1.05rem;
+    }
+    .author-loc{
+      color:var(--gold);
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+    }
+
+    /* faq */
+    .faq{background:var(--bg2)}
+    .faq-wrap{
+      max-width:920px;
+      margin:0 auto;
+      display:grid;
+      gap:14px;
+    }
+    .faq-item{
+      background:var(--bg3);
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .faq-question{
+      width:100%;
+      background:none;
+      border:none;
+      color:var(--text);
+      text-align:left;
+      padding:22px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      font-family:var(--heading);
+      font-size:1.05rem;
+      cursor:pointer;
+    }
+    .faq-question span{
+      color:var(--gold);
+      font-size:1.2rem;
+    }
+    .faq-answer{
+      display:none;
+      padding:0 24px 22px;
+      color:var(--muted);
+      font-size:.94rem;
+    }
+    .faq-item.active .faq-answer{display:block}
+
+    /* booking */
+    .booking{
+      background:linear-gradient(135deg,#151515 0%,#0f0f0f 100%);
+    }
+    .booking-wrap{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:34px;
+      align-items:start;
+    }
+    .booking-points{
+      list-style:none;
+      margin-top:24px;
+      display:grid;
+      gap:12px;
+    }
+    .booking-points li{
+      position:relative;
+      color:var(--muted);
+      padding-left:18px;
+    }
+    .booking-points li::before{
+      content:"✦";
+      position:absolute;
+      left:0;top:0;
+      color:var(--gold);
+      font-size:.72rem;
+    }
+    .mini-contact{
+      display:grid;
+      gap:10px;
+      margin-top:26px;
+    }
+    .mini-contact a{
+      color:var(--gold);
+    }
+    .form-box{
+      background:var(--bg2);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:32px;
+      box-shadow:var(--shadow);
+    }
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-bottom:16px;
+    }
+    .form-group{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .form-group.full{grid-column:1/-1}
+    .form-group label{
+      color:var(--gold);
+      font-size:.72rem;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+      width:100%;
+      background:#131313;
+      color:var(--text);
+      border:1px solid rgba(201,169,110,.13);
+      border-radius:10px;
+      padding:14px 15px;
+      outline:none;
+      font-family:var(--body);
+    }
+    .form-group textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+    .success-msg{
+      display:none;
+      margin-top:16px;
+      color:var(--gold);
+      font-size:.95rem;
+    }
+
+    /* footer */
+    .footer{
+      background:#0c0c0c;
+      padding:70px 0 30px;
+      border-top:1px solid rgba(201,169,110,.08);
+    }
+    .footer-top{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
+      gap:30px;
+      margin-bottom:40px;
+    }
+    .footer-brand p{
+      color:var(--muted);
+      font-size:.9rem;
+      margin-top:16px;
+      max-width:340px;
+    }
+    .footer-col h4{
+      font-family:var(--heading);
+      margin-bottom:14px;
+      font-size:1rem;
+    }
+    .footer-col ul{list-style:none}
+    .footer-col li{margin-bottom:10px}
+    .footer-col a{
+      color:var(--muted);
+      font-size:.88rem;
+      transition:.3s;
+    }
+    .footer-col a:hover{color:var(--gold)}
+    .footer-bottom{
+      padding-top:22px;
+      border-top:1px solid rgba(201,169,110,.08);
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .footer-bottom p,
+    .footer-bottom a{
+      color:var(--muted);
+      font-size:.82rem;
+    }
+
+    /* whatsapp */
+    .whatsapp{
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      width:58px;height:58px;
+      border-radius:50%;
+      background:#25D366;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:500;
+      box-shadow:0 10px 25px rgba(37,211,102,.28);
+    }
+    .whatsapp svg{width:28px;height:28px;fill:#fff}
+
+    @media (max-width:1024px){
+      .tour-grid,.dest-grid,.test-grid{grid-template-columns:repeat(2,1fr)}
+      .why-grid{grid-template-columns:repeat(2,1fr)}
+      .featured-wrap,.booking-wrap,.footer-top{grid-template-columns:1fr}
+      .featured-image{min-height:420px}
+    }
+
+    @media (max-width:768px){
+      section{padding:78px 0}
+      .menu-toggle{display:block}
+      .nav-links{
+        position:fixed;
+        top:74px;
+        right:-100%;
+        width:82%;
+        max-width:320px;
+        height:calc(100vh - 74px);
+        background:#111;
+        border-left:1px solid var(--border);
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:30px 24px;
+        transition:.35s ease;
+      }
+      .nav-links.active{right:0}
+      .nav-cta-wrap{display:none}
+      .tour-grid,.dest-grid,.why-grid,.test-grid{grid-template-columns:1fr}
+      .featured-list{grid-template-columns:1fr}
+      .gallery-grid{columns:2}
+      .form-row{grid-template-columns:1fr}
+      .hero-buttons{flex-direction:column;align-items:flex-start}
+      .footer-bottom{flex-direction:column}
+    }
+
+    @media (max-width:520px){
+      .gallery-grid{columns:1}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-wrap">
+      <a href="#hero" class="logo">Equinox <span>Safaris</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#tours">Tours</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#booking">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta-wrap">
+        <a href="#booking" class="btn btn-primary nav-cta">Book Now</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1800&q=80" alt="Horse Riding Tour">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Premium Horse Riding Tours Across Asia</div>
+        <h1 class="hero-title">Ride Beyond The <em>Horizon</em></h1>
+        <p class="hero-subtitle">
+          Discover unforgettable horse riding journeys through mountain trails, nomadic landscapes,
+          cultural routes, and remote valleys across Kyrgyzstan, Kazakhstan, Uzbekistan, Georgia,
+          Pakistan, and Armenia.
+        </p>
+        <div class="hero-buttons">
+          <a href="#tours" class="btn btn-primary">Explore Tours</a>
+          <a href="#booking" class="btn btn-outline">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tours -->
+  <section class="tours" id="tours">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Our Tours</span>
+        <h2 class="section-title">Curated Riding <em>Experiences</em></h2>
+        <p class="section-desc">
+          Each tour is designed for riders who want adventure, comfort, and authentic landscapes with expert support.
+        </p>
+      </div>
+
+      <div class="tour-grid">
+
+        <article class="tour-card">
+          <div class="tour-image">
+            <span class="tour-badge">Popular</span>
+            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=900&q=80" alt="Kyrgyzstan Tour">
+          </div>
+          <div class="tour-body">
+            <div class="tour-country">Kyrgyzstan</div>
+            <h3 class="tour-title">Nomadic Mountain Ride</h3>
+            <p class="tour-text">
+              Ride through alpine meadows, mountain passes, and remote summer pastures with breathtaking open scenery.
+            </p>
+            <div class="tour-meta">
+              <span>7 Days</span>
+              <span>Intermediate</span>
+              <span>Max 8 Riders</span>
+            </div>
+            <div class="tour-bottom">
+              <div class="tour-price">$2,900 <small>/ person</small></div>
+              <a href="tour-detail.html" class="tour-link">View Tour →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour-card">
+          <div class="tour-image">
+            <span class="tour-badge">Featured</span>
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80" alt="Pakistan Tour">
+          </div>
+          <div class="tour-body">
+            <div class="tour-country">Pakistan</div>
+            <h3 class="tour-title">Northern Valleys Expedition</h3>
+            <p class="tour-text">
+              An unforgettable horseback journey through dramatic mountain valleys, scenic camps, and rugged northern routes.
+            </p>
+            <div class="tour-meta">
+              <span>8 Days</span>
+              <span>Intermediate+</span>
+              <span>Max 6 Riders</span>
+            </div>
+            <div class="tour-bottom">
+              <div class="tour-price">$3,600 <small>/ person</small></div>
+              <a href="tour-detail.html" class="tour-link">View Tour →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour-card">
+          <div class="tour-image">
+            <span class="tour-badge">Best Seller</span>
+            <img src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?w=900&q=80" alt="Georgia Tour">
+          </div>
+          <div class="tour-body">
+            <div class="tour-country">Georgia</div>
+            <h3 class="tour-title">Caucasus Trail Escape</h3>
+            <p class="tour-text">
+              Explore mountain scenery, village hospitality, cultural routes, and beautiful horseback paths across Georgia.
+            </p>
+            <div class="tour-meta">
+              <span>6 Days</span>
+              <span>Beginner+</span>
+              <span>Max 10 Riders</span>
+            </div>
+            <div class="tour-bottom">
+              <div class="tour-price">$2,450 <small>/ person</small></div>
+              <a href="tour-detail.html" class="tour-link">View Tour →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Destinations -->
+  <section class="destinations" id="destinations">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Current Destinations</span>
+        <h2 class="section-title">Where We Ride <em>Now</em></h2>
+        <p class="section-desc">
+          Explore our active horse riding destinations across Central Asia, the Caucasus, and Pakistan.
+        </p>
+      </div>
+
+      <div class="dest-grid">
+
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=900&q=80" alt="Kyrgyzstan">
+          <div class="dest-overlay">
+            <div class="dest-content">
+              <span class="dest-tag">Nomadic Trails</span>
+              <h3>Kyrgyzstan</h3>
+              <p>High-altitude riding routes through alpine meadows, camps, and mountain passes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80" alt="Kazakhstan">
+          <div class="dest-overlay">
+            <div class="dest-content">
+              <span class="dest-tag">Open Steppe Routes</span>
+              <h3>Kazakhstan</h3>
+              <p>Wide-open landscapes, scenic valleys, and long-distance riding adventures.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900&q=80" alt="Uzbekistan">
+          <div class="dest-overlay">
+            <div class="dest-content">
+              <span class="dest-tag">Cultural Trails</span>
+              <h3>Uzbekistan</h3>
+              <p>Horseback routes through countryside scenery, heritage regions, and desert-edge landscapes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?w=900&q=80" alt="Georgia">
+          <div class="dest-overlay">
+            <div class="dest-content">
+              <span class="dest-tag">Village & Mountain Rides</span>
+              <h3>Georgia</h3>
+              <p>Traditional villages, green valleys, and mountain routes full of character and beauty.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900&q=80" alt="Pakistan">
+          <div class="dest-overlay">
+            <div class="dest-content">
+              <span class="dest-tag">High Mountain Expeditions</span>
+              <h3>Pakistan</h3>
+              <p>Dramatic northern valleys, rugged trails, and unforgettable high-altitude riding scenery.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=900&q=80" alt="Armenia">
+          <div class="dest-overlay">
+            <div class="dest-content">
+              <span class="dest-tag">Heritage & Nature Routes</span>
+              <h3>Armenia</h3>
+              <p>Rolling landscapes, scenic countryside, and riding journeys rich in culture and history.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Why Choose Us</span>
+        <h2 class="section-title">Why Riders Trust <em>Equinox</em></h2>
+        <p class="section-desc">
+          Beautiful routes, trusted horses, local expertise, and carefully planned journeys from start to finish.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🐎</div>
+          <h3>Trusted Horses</h3>
+          <p>Carefully selected horses matched to route type, terrain, and rider comfort.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">⛰</div>
+          <h3>Scenic Trails</h3>
+          <p>Handpicked routes through mountains, valleys, villages, and remote natural landscapes.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">✦</div>
+          <h3>Expert Guides</h3>
+          <p>Experienced local teams who know the land, logistics, and riding conditions well.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon">✓</div>
+          <h3>Small Groups</h3>
+          <p>More personal support, better pacing, and a higher-quality riding experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tour -->
+  <section class="featured">
+    <div class="container">
+      <div class="featured-wrap">
+        <div class="featured-image">
+          <img src="https://images.unsplash.com/photo-1534773728080-a95c1e28e8c1?w=1200&q=80" alt="Featured Tour">
+        </div>
+
+        <div class="featured-content">
+          <span class="section-label">Featured Tour</span>
+          <h2 class="section-title">The Pakistan <em>Mountain Ride</em></h2>
+          <p class="section-desc">
+            One of our most memorable multi-day journeys through northern mountain valleys,
+            scenic camp stays, and remote highland trails designed for adventurous riders.
+          </p>
+
+          <div class="featured-stats">
+            <div>
+              <h4>8</h4>
+              <p>Days</p>
+            </div>
+            <div>
+              <h4>6</h4>
+              <p>Max Riders</p>
+            </div>
+            <div>
+              <h4>Adv.</h4>
+              <p>Scenery</p>
+            </div>
+            <div>
+              <h4>Top</h4>
+              <p>Seller</p>
+            </div>
+          </div>
+
+          <ul class="featured-list">
+            <li>Expert mountain guides</li>
+            <li>Beautiful scenic camps</li>
+            <li>Carefully selected horses</li>
+            <li>Small-group departures</li>
+            <li>Authentic regional experience</li>
+            <li>Pre-trip support & guidance</li>
+          </ul>
+
+          <a href="tour-detail.html" class="btn btn-primary">View Tour</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Gallery</span>
+        <h2 class="section-title">Moments From <em>The Trail</em></h2>
+        <p class="section-desc">
+          A glimpse into our landscapes, riding routes, camp moments, and unforgettable adventures.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=900&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=900&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=900&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?w=900&q=80" alt=""></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">Testimonials</span>
+        <h2 class="section-title">What Our <em>Riders Say</em></h2>
+        <p class="section-desc">
+          Riders choose Equinox for unforgettable landscapes, reliable planning, and premium horseback journeys.
+        </p>
+      </div>
+
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <p>“The Kyrgyzstan ride was absolutely stunning. Great support, beautiful horses, and unforgettable scenery.”</p>
+          <div class="author">Sarah Mitchell</div>
+          <div class="author-loc">United Kingdom</div>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <p>“Professional, well-organized, and visually breathtaking. It felt adventurous but also carefully managed.”</p>
+          <div class="author">James Carter</div>
+          <div class="author-loc">Canada</div>
+        </div>
+
+        <div class="test-card">
+          <div class="stars">★★★★★</div>
+          <p>“Pakistan was beyond my expectations. The route, camps, and guide team were all excellent.”</p>
+          <div class="author">Elena Rodriguez</div>
+          <div class="author-loc">Spain</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+      </div>
+
+      <div class="faq-wrap">
+        <div class="faq-item active">
+          <button class="faq-question">Do I need riding experience? <span>+</span></button>
+          <div class="faq-answer">
+            Some tours are suitable for beginners+, while others are designed for intermediate or experienced riders. We help match each rider to the right trip.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Which countries are currently active? <span>+</span></button>
+          <div class="faq-answer">
+            We currently operate tours in Kyrgyzstan, Kazakhstan, Uzbekistan, Georgia, Pakistan, and Armenia.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I request a private tour? <span>+</span></button>
+          <div class="faq-answer">
+            Yes, private and custom riding tours can be arranged depending on destination, season, and group size.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What is usually included in the price? <span>+</span></button>
+          <div class="faq-answer">
+            In most cases, the price includes guiding, horses, route support, accommodation during the ride, and selected meals. Final inclusions depend on the chosen tour.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="booking-wrap">
+        <div class="booking-info">
+          <span class="section-label">Booking / Contact</span>
+          <h2 class="section-title">Plan Your <em>Next Ride</em></h2>
+          <p class="section-desc">
+            Share your destination, riding level, and preferred dates. Our team will help you choose the right journey.
+          </p>
+
+          <ul class="booking-points">
+            <li>Personalized itinerary support</li>
+            <li>Small-group and private options</li>
+            <li>Guidance before booking</li>
+            <li>Quick response from our team</li>
+          </ul>
+
+          <div class="mini-contact">
+            <a href="mailto:hello@equinoxsafaris.com">hello@equinoxsafaris.com</a>
+            <a href="tel:+442079460958">+44 20 7946 0958</a>
+          </div>
+        </div>
+
+        <div class="form-box">
+          <form id="bookingForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" required>
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Destination</label>
+                <select required>
+                  <option value="">Select Destination</option>
+                  <option>Kyrgyzstan</option>
+                  <option>Kazakhstan</option>
+                  <option>Uzbekistan</option>
+                  <option>Georgia</option>
+                  <option>Pakistan</option>
+                  <option>Armenia</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Riding Level</label>
+                <select>
+                  <option>Beginner</option>
+                  <option>Beginner+</option>
+                  <option selected>Intermediate</option>
+                  <option>Advanced</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Preferred Date</label>
+                <input type="date">
+              </div>
+              <div class="form-group">
+                <label>Riders</label>
+                <select>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group full">
+                <label>Message</label>
+                <textarea placeholder="Tell us about the tour you are interested in..."></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">Send Inquiry</button>
+            <div class="success-msg" id="successMsg">Thanks! Your inquiry has been submitted successfully.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="logo">Equinox <span>Safaris</span></a>
+          <p>
+            Premium horse riding tours across Central Asia, the Caucasus, and Pakistan — crafted for riders who seek beauty, adventure, and unforgettable landscapes.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#tours">Tours</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Destinations</h4>
+          <ul>
+            <li><a href="#destinations">Kyrgyzstan</a></li>
+            <li><a href="#destinations">Kazakhstan</a></li>
+            <li><a href="#destinations">Uzbekistan</a></li>
+            <li><a href="#destinations">Georgia</a></li>
+            <li><a href="#destinations">Pakistan</a></li>
+            <li><a href="#destinations">Armenia</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@equinoxsafaris.com">hello@equinoxsafaris.com</a></li>
+            <li><a href="tel:+442079460958">+44 20 7946 0958</a></li>
+            <li><a href="#booking">Book / Inquiry</a></li>
+            <li><a href="https://wa.me/442079460958" target="_blank">WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 Equinox Safaris. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a class="whatsapp" href="https://wa.me/442079460958" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg>
+  </a>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 20);
+    });
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("active"));
+    });
+
+    document.querySelectorAll(".faq-question").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.parentElement;
+        document.querySelectorAll(".faq-item").forEach(faq => {
+          if(faq !== item) faq.classList.remove("active");
+        });
+        item.classList.toggle("active");
+      });
+    });
+
+    const bookingForm = document.getElementById("bookingForm");
+    const successMsg = document.getElementById("successMsg");
+
+    bookingForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      successMsg.style.display = "block";
+      bookingForm.reset();
+    });
+  </script>
+</body>
+</html>
